@@ -5,16 +5,27 @@ The Book Management Application is a simple and efficient system designed to man
 
 **Project Structure**
 book-management/
+
 ├── config/ # Database Configuration files
+
 ├── src/ # Business logic & database handling
+
 │ ├── controllers/ # Handles business logic
+
 │ ├── middleware/ # Authentication
+
 │ ├── models/ # Database schemas
+
 │ ├── routes/ # API routes
+
 │ ├── test/ # Mocha Test Scripts
+
 ├── logger.js # Handles logs
+
 ├── package.json # Node.js dependencies
+
 ├── README.md # Project documentation
+
 └── app.js # Main entry point
 
 **Installation & Setup**
