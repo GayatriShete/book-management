@@ -1,0 +1,38 @@
+version: "3.8"
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: mysql_container
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: "1008"
+      MYSQL_DATABASE: "book_mgmt"
+      MYSQL_USER: "root"
+      MYSQL_PASSWORD: "1008"
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  app:
+    build: .
+    container_name: book_mgmt_app
+    restart: always
+    depends_on:
+      - db
+    environment:
+      DB_HOST: "db"
+      DB_USER: "root"
+      DB_PASSWORD: "1008"
+      DB_NAME: "book_mgmt"
+      PORT: "3000"
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/usr/src/app
+    working_dir: /usr/src/app
+    command: ["node", "app.js"]
+
+volumes:
+  mysql_data:
